@@ -12,10 +12,11 @@ const Nav = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      const res = await getProviders();
-      setProviders(res);
-    })();
+    const setUpProviders = async () => {
+      const response = await getProviders();
+      setProviders(response);
+    }
+    setUpProviders();
   }, []);
 
   return (
@@ -23,14 +24,14 @@ const Nav = () => {
       <Link href='/' className='flex gap-2 flex-center'>
         <Image
           src='/assets/images/logo.svg'
-          alt='logo'
+          alt='Promptopia Logo'
           width={30}
           height={30}
           className='object-contain'
         />
         <p className='logo_text'>Promptopia</p>
       </Link>
-      {alert(providers)}
+
       {/* Desktop Navigation */}
       <div className='sm:flex hidden'>
         {session?.user ? (
