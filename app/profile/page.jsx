@@ -14,7 +14,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/user/${session?.user.id}/posts`);
+      const response = await fetch(`/api/users/${session?.user.id}/posts`);
       const data = await response.json();
 
       setMyPosts(data);
@@ -38,8 +38,8 @@ const MyProfile = () => {
           method: "DELETE",
         });
 
-        const filteredPosts = myPosts.filter((p) => p._id !== post._id);
-        
+        const filteredPosts = myPosts.filter((item) => item._id !== post._id);
+
         setMyPosts(filteredPosts);
       } catch (error) {
         console.log(error);
